@@ -1,0 +1,115 @@
+body{
+    background-color: #03081d;
+    color: rgb(207, 207, 207);
+}
+/* navbar */
+nav{
+    background-color: #03081d;
+}
+.logo{
+    width: 100px;
+    margin-top: -10px;
+
+}
+@media all and (min-width: 323px) and (max-width: 450px){
+    /*Navbar  */
+    .inicio{
+      display: none;
+      
+  }
+  .boton, .boton2{
+      font-size: 13px;
+  }
+  .logo{
+    width: 80px;
+  }
+}
+/* Botones */
+.boton{
+    text-decoration: none;
+    border-radius: 3px ;
+    color: white;
+    background: #0063e5;
+    
+}
+.boton:hover{
+    text-decoration: none;
+    color: white;
+    background: #4090ec;
+}
+.boton2{
+    text-decoration: none;
+    border-radius: 3px ;
+    color: white;
+
+    
+}
+.boton2:hover{
+    text-decoration: none;
+    color: black;
+    background: white;
+}
+.inicio{
+    color: rgb(189, 189, 189);
+    margin-top: -3px;
+}
+.inicio:hover{
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: rgb(202, 202, 202);
+}
+a:hover{
+    color: white;
+}
+/* portada */
+.portada{
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    
+}
+.portada:before{
+    content:'';
+	position: absolute;
+        top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.6);
+}
+.textosPortada{
+    position: absolute;
+    margin-bottom: 50px;
+}
+.textosPortada h2{
+    font-size: 5vmin;
+}
+.textosPortada p{
+    font-size: 3vmin;
+}
+@media all and (min-width: 322px) and (max-width: 767px){
+    .portada{
+        align-items: center;
+    }
+    .textosPortada{
+        margin-bottom: 0;
+    }
+}
+/*media queries */
+/* @media mediatype */
+/* device lg-grande */
+@media all and (min-width: 992px){
+
+}
+/* device md-medio */
+@media all and (min-width: 768px) and (max-width: 991px){
+
+}
+
+/* device sm-pequeño */
+@media all and (min-width: 322px) and (max-width: 767px){
+
+}
