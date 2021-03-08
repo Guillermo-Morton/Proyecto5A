@@ -23,6 +23,17 @@ nav{
     width: 80px;
   }
 }
+/* Footer */
+@media all and (min-width: 322px) and (max-width: 534px){
+    .a{
+        font-size: 13px;
+    }
+}
+@media all and (min-width: 535px) and (max-width: 767px){
+    .a{
+        font-size: 15px;
+    }
+}
 /* Botones */
 .boton{
     text-decoration: none;
@@ -89,6 +100,21 @@ a:hover{
 .textosPortada p{
     font-size: 3vmin;
 }
+/* carrete de peliculas */
+.wrapper{
+    display: flex;
+    overflow-x: auto;
+
+}
+.wrapper::-webkit-scrollbar{
+    width: 0;
+}
+.wrapper .pelicula{
+    min-width: 110px;
+    line-height: 110px;
+    margin-right: 8px;
+    
+}
 @media all and (min-width: 322px) and (max-width: 767px){
     .portada{
         align-items: center;
@@ -97,7 +123,13 @@ a:hover{
         margin-bottom: 0;
     }
 }
+/* error 404 */
 
+@media all and (min-width: 322px) and (max-width: 767px){
+    .error{
+        width: 60%!important;
+    }
+}
 
 /*media queries */
 /* @media mediatype */
