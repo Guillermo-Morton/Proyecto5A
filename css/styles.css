@@ -12,7 +12,6 @@ nav{
 
 }
 @media all and (min-width: 323px) and (max-width: 450px){
-    /*Navbar  */
     .inicio{
       display: none;
       
@@ -82,7 +81,7 @@ a:hover{
 }
 .textosPortada{
     position: absolute;
-    margin-bottom: 50px;
+    margin-bottom: 75px;
 }
 .textosPortada h2{
     font-size: 5vmin;
@@ -98,6 +97,9 @@ a:hover{
         margin-bottom: 0;
     }
 }
+/* carrete de peliculas */
+
+
 /*media queries */
 /* @media mediatype */
 /* device lg-grande */
