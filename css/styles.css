@@ -10,6 +10,9 @@ body{
 .modal-backdrop{
     background-color: #03081d;
 }
+.swal-overlay {
+    background-color: #03081d;
+  }.
 
 /* navbar */
 nav{
