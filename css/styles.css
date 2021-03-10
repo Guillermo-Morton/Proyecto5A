@@ -2,6 +2,14 @@ body{
     background-color: #03081d;
     color: rgb(207, 207, 207);
 }
+/* modal */
+.modal-content {
+    background: #03081d !important; 
+    opacity: 0.95;
+}
+.modal-backdrop{
+    background-color: #03081d;
+}
 
 /* navbar */
 nav{
