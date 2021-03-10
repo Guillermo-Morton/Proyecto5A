@@ -6,19 +6,13 @@ const modalPelicula = new bootstrap.Modal(document.getElementById('modal'));
 
 let btnAgregar = document.getElementById('btnAgregar');
 btnAgregar.addEventListener('click', ()=>{
-    existePelicula=false;
-    if(existePelicula===false){
-      let readOnly= document.getElementById("readOnly");
-      readOnly.innerHTML=`
-      <label for="">Codigo</label>
-      <input type="number" placeholder="Ingrese el codigo de la pelicula" id="codigoPelicula"  class="form-control"
-      onblur="campoRequerido(this)" onkeyup="validarCodigo(this)">
-      `;
-     }
-
-    limpiarFormulario();
-    modalPelicula.show();
-    console.log(existePelicula)
+  let dNone = document.getElementById("d-none");
+  dNone.className="mb-3";
+  let display = document.getElementById("display");
+  display.className="mb-3 d-none";
+ 
+  limpiarFormulario();  
+  modalPelicula.show();
 })
 let existePelicula= false;
 
@@ -29,7 +23,6 @@ leerDatos();
 
 window.agregarPelicula= function(event){
     console.log("dentro de la funcion agregar");
-
     if (validarGeneral()){
         // se crea la pelicula
         let nuevaPelicula = new Pelicula
@@ -164,35 +157,28 @@ window.eliminarPelicula= function (pelicula){
 // estas tres funciones son para el correcto funcionamiento del boton editar
 window.editarPelicula= function(btnEditar){
     console.log('Prueba', btnEditar.id);
-    
+    let dNone = document.getElementById("d-none");
+    dNone.className="mb-3 d-none";
+    let display = document.getElementById("display");
+    display.className="mb-3";
+
     // limpiar los datos de la ventana modal
     limpiarFormulario();
-    //cambiar el valor de la variable existePelicula
-    existePelicula= true; 
     // busca el objeto a modificar
     let objetoEncontrado = listaPelicula.find((producto)=>{
       return producto.codigo==btnEditar.id;
     });
     console.log(objetoEncontrado)
    //cargar los datos en el formulario
-   var _codigo= document.getElementById('codigoPelicula').value=objetoEncontrado.codigo; 
+   document.getElementById('codigoPelicula2').value=objetoEncontrado.codigo; 
+   document.getElementById('codigoPelicula').value=objetoEncontrado.codigo; 
    document.getElementById('nombrePelicula').value=objetoEncontrado.nombre; 
    document.getElementById('categoriaPelicula').value=objetoEncontrado.categoria; 
    document.getElementById('descripcionPelicula').value=objetoEncontrado.descripcion; 
    document.getElementById('imagenPelicula').value=objetoEncontrado.imagen; 
    document.getElementById('embedPelicula').value=objetoEncontrado.embed; 
-
-   if(existePelicula===true){
-    let readOnly= document.getElementById("readOnly");
-    readOnly.innerHTML=`
-    <label for="">Codigo</label>
-    <input type="number" readonly placeholder="${objetoEncontrado.codigo}"  class="form-control"
-    >
-    `;
-   }
-    
-   console.log(existePelicula)
-
+   //cambiar el valor de la variable existePelicula
+    existePelicula= true; 
     modalPelicula.show();
   }
   window.guardarPelicula= function(event){
@@ -202,16 +188,14 @@ window.editarPelicula= function(btnEditar){
       actualizarDatosPelicula();
     }else{
       agregarPelicula();
-      existePelicula=false;
-      
     }
   }
   function actualizarDatosPelicula(){
     // esta funcion guarda en localstorage con los datos modificados
     console.log('modificar');
     // validar los campos
-    if(validarEditar()){
-     
+    if(validarGeneral()){
+    let codigo=document.getElementById('codigoPelicula').value; 
     let nombre=document.getElementById('nombrePelicula').value; 
     let categoria=document.getElementById('categoriaPelicula').value; 
     let descripcion=document.getElementById('descripcionPelicula').value; 
@@ -219,30 +203,27 @@ window.editarPelicula= function(btnEditar){
     let embed=document.getElementById('embedPelicula').value; 
     //buscar el objeto que quiero modificar y cambiar sus valores
     for(let i in listaPelicula){
-      if(_codigo===codigo){
+      if(listaPelicula[i].codigo===codigo){
         // encontre por id la pelicula a editar
         listaPelicula[i].nombre=nombre;
         listaPelicula[i].categoria=categoria;
         listaPelicula[i].descripcion=descripcion;
         listaPelicula[i].imagen=imagen;
         listaPelicula[i].embed=embed;
-            // guardar el array en localstorage
-        localStorage.setItem('listaPeliculasKey', JSON.stringify(listaPelicula))
-        // limpiar los datos
-        limpiarFormulario();
-        // cerrar ventana
-        modalPelicula.hide();
-        // mostrar mensaje de operacion con exito
-        Swal.fire(
-         'Perfecto!',
-          'Editaste una pelicula correctamente',
-          'success'
-       )
       }
     }
-
+    // guardar el array en localstorage
+    localStorage.setItem('listaPeliculasKey', JSON.stringify(listaPelicula))
+    // limpiar los datos
+    limpiarFormulario();
+    // cerrar ventana
+    modalPelicula.hide();
+    // mostrar mensaje de operacion con exito
+    Swal.fire(
+      'Perfecto!',
+      'Editaste una pelicula correctamente',
+      'success'
+    )
     leerDatos();
     }
   } 
-
-
