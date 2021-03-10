@@ -77,7 +77,14 @@
                 </div>
                 <div class="modal-body">
                     <form id="formulario" onsubmit="guardarPelicula(event)">
-                         <div class="mb-3">
+                         <div id="display" class="mb-3">
+                             <label for="">Codigo</label>
+                             <input type="number" readonly placeholder="No se puede cambiar el codigo" id="codigoPelicula2"  class="form-control">
+                             <div class="alert text-center" role="alert">
+                                Nota: No puedes modificar el codigo de la pelicula
+                              </div>
+                        </div>
+                         <div id="d-none" class="mb-3">
                              <label for="">Codigo</label>
                              <input type="number" placeholder="Ingrese el codigo de la pelicula" id="codigoPelicula"  class="form-control"
                              onblur="campoRequerido(this)" onkeyup="validarCodigo(this)">

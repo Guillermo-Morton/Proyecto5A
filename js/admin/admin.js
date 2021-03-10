@@ -6,7 +6,13 @@ const modalPelicula = new bootstrap.Modal(document.getElementById('modal'));
 
 let btnAgregar = document.getElementById('btnAgregar');
 btnAgregar.addEventListener('click', ()=>{
-    modalPelicula.show();
+  let dNone = document.getElementById("d-none");
+  dNone.className="mb-3";
+  let display = document.getElementById("display");
+  display.className="mb-3 d-none";
+ 
+  limpiarFormulario();  
+  modalPelicula.show();
 })
 let existePelicula= false;
 
@@ -151,6 +157,11 @@ window.eliminarPelicula= function (pelicula){
 // estas tres funciones son para el correcto funcionamiento del boton editar
 window.editarPelicula= function(btnEditar){
     console.log('Prueba', btnEditar.id);
+    let dNone = document.getElementById("d-none");
+    dNone.className="mb-3 d-none";
+    let display = document.getElementById("display");
+    display.className="mb-3";
+
     // limpiar los datos de la ventana modal
     limpiarFormulario();
     // busca el objeto a modificar
@@ -159,6 +170,7 @@ window.editarPelicula= function(btnEditar){
     });
     console.log(objetoEncontrado)
    //cargar los datos en el formulario
+   document.getElementById('codigoPelicula2').value=objetoEncontrado.codigo; 
    document.getElementById('codigoPelicula').value=objetoEncontrado.codigo; 
    document.getElementById('nombrePelicula').value=objetoEncontrado.nombre; 
    document.getElementById('categoriaPelicula').value=objetoEncontrado.categoria; 
