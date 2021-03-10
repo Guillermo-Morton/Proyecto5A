@@ -18,7 +18,6 @@ leerDatos();
 window.agregarPelicula= function(event){
     console.log("dentro de la funcion agregar");
     if (validarGeneral()){
-
         // se crea la pelicula
         let nuevaPelicula = new Pelicula
         (document.getElementById('codigoPelicula').value,
@@ -33,29 +32,29 @@ window.agregarPelicula= function(event){
         // guardar los datos en localstorage
         localStorage.setItem('listaPeliculasKey', JSON.stringify(listaPelicula));
         // limpiar el formulario
-        limpiarForumulario();
+        limpiarFormulario();
         // leer datos
         leerDatos();
         // mostrar cartel de datos guardados y cerrar el modal
-
+        Swal.fire(
+            'Perfecto!',
+            'Agregaste un producto correctamente',
+            'success'
+          )
         modalPelicula.hide();
     }else{
         console.log("datos incorretos");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Algo salio mal!',
+          })
 
     }
 
-}
-
-window.guardarPelicula= function(event){
-    event.preventDefault();
-    if(existePelicula=== true){
-
-    }else{
-        agregarPelicula();
-    }
 }
 // funcion para limpiar el formulario
-function limpiarForumulario(){
+function limpiarFormulario(){
     let formulario = document.getElementById('formulario');
     formulario.reset();
     let codigoPelicula= document.getElementById(`codigoPelicula`);
@@ -63,8 +62,7 @@ function limpiarForumulario(){
     
     let nombrePelicula= document.getElementById(`nombrePelicula`);
     nombrePelicula.className= "form-control";
-    
-    
+      
     let categoriaPelicula= document.getElementById(`categoriaPelicula`);
     categoriaPelicula.className= "form-control";
     
@@ -88,9 +86,8 @@ function limpiarForumulario(){
         // si el arreglo de pelicula esta vacio igualar con los que traje de localstorage
         if(listaPelicula.length === 0){
             listaPelicula= _listaPelicula;
-    
         }
-        // dibujar todos los objetos funko en la tabla
+        // dibujar todos los objetos pelicula en la tabla
         dibujarDatos(_listaPelicula);
     }
     
@@ -100,7 +97,7 @@ function dibujarDatos(_listaPelicula){
     let bodyTablaProductos = document.getElementById('tbodyProductos');
     bodyTablaProductos.innerHTML = '';
     let codigoHTML = '';
-    // for(let i=0; i > _listaFunkopop.length; i++)
+    // for(let i=0; i > _listaPelicula.length; i++)
     for(let i in _listaPelicula){
         codigoHTML = `
          <tr>
@@ -108,9 +105,9 @@ function dibujarDatos(_listaPelicula){
             <td>${_listaPelicula[i].nombre}</td>
             <td>${_listaPelicula[i].categoria}</td>
             <td>${_listaPelicula[i].descripcion}</td>
-            <td>${_listaPelicula[i].imagen}</td>
+            <td><input type="checkbox" name="" id="${_listaPelicula[i].codigo}"></td>
             <td>
-                <a class="ms-1"><i class="far fa-edit"></i></a>
+                <a onclick="editarPelicula(this)" class="ms-1" id="${_listaPelicula[i].codigo}"><i class="far fa-edit"></i></a>
                 <a onclick="eliminarPelicula(this)" class="ms-1" id="${_listaPelicula[i].codigo}"><i class="fas fa-trash-alt"></i></a>
                 <a class="ms-1"><i class="far fa-star"></i></a>
             </td>
@@ -119,10 +116,11 @@ function dibujarDatos(_listaPelicula){
         bodyTablaProductos.innerHTML += codigoHTML;
     }
 }
+// funcion para eliminar peliculas del localstorage
 window.eliminarPelicula= function (pelicula){
     console.log('prueba', pelicula.id);
     Swal.fire({
-        title: '¿Estas seguro de eliminar el Funkopop seleccionado?',
+        title: '¿Estas seguro de eliminar la pelicula seleccionada?',
         text: "No hay posibilidades de revertir esta accion!",
         icon: 'warning',
         showCancelButton: true,
@@ -136,7 +134,7 @@ window.eliminarPelicula= function (pelicula){
             let peliculasFiltradas = listaPelicula.filter((producto)=>{
               return producto.codigo != pelicula.id;
             })
-            // pasamos los funko filtrados al arreglo principal
+            // pasamos la pelicula filtradas al arreglo principal
             listaPelicula = peliculasFiltradas;
             // guardar los nuevos datos en local storage
             localStorage.setItem('listaPeliculasKey', JSON.stringify(listaPelicula))
@@ -148,6 +146,72 @@ window.eliminarPelicula= function (pelicula){
             'success'
           )
         }
-      })
-      
+      })     
 }
+// estas tres funciones son para el correcto funcionamiento del boton editar
+window.editarPelicula= function(btnEditar){
+    console.log('Prueba', btnEditar.id);
+    // limpiar los datos de la ventana modal
+    limpiarFormulario();
+    // busca el objeto a modificar
+    let objetoEncontrado = listaPelicula.find((producto)=>{
+      return producto.codigo==btnEditar.id;
+    });
+    console.log(objetoEncontrado)
+   //cargar los datos en el formulario
+   document.getElementById('codigoPelicula').value=objetoEncontrado.codigo; 
+   document.getElementById('nombrePelicula').value=objetoEncontrado.nombre; 
+   document.getElementById('categoriaPelicula').value=objetoEncontrado.categoria; 
+   document.getElementById('descripcionPelicula').value=objetoEncontrado.descripcion; 
+   document.getElementById('imagenPelicula').value=objetoEncontrado.imagen; 
+   document.getElementById('embedPelicula').value=objetoEncontrado.embed; 
+   //cambiar el valor de la variable existePelicula
+    existePelicula= true; 
+    modalPelicula.show();
+  }
+  window.guardarPelicula= function(event){
+    event.preventDefault();
+    if(existePelicula===true){
+  
+      actualizarDatosPelicula();
+    }else{
+      agregarPelicula();
+    }
+  }
+  function actualizarDatosPelicula(){
+    // esta funcion guarda en localstorage con los datos modificados
+    console.log('modificar');
+    // validar los campos
+    if(validarGeneral()){
+    let codigo=document.getElementById('codigoPelicula').value; 
+    let nombre=document.getElementById('nombrePelicula').value; 
+    let categoria=document.getElementById('categoriaPelicula').value; 
+    let descripcion=document.getElementById('descripcionPelicula').value; 
+    let imagen=document.getElementById('imagenPelicula').value; 
+    let embed=document.getElementById('embedPelicula').value; 
+    //buscar el objeto que quiero modificar y cambiar sus valores
+    for(let i in listaPelicula){
+      if(listaPelicula[i].codigo===codigo){
+        // encontre por id la pelicula a editar
+        listaPelicula[i].nombre=nombre;
+        listaPelicula[i].categoria=categoria;
+        listaPelicula[i].descripcion=descripcion;
+        listaPelicula[i].imagen=imagen;
+        listaPelicula[i].embed=embed;
+      }
+    }
+    // guardar el array en localstorage
+    localStorage.setItem('listaPeliculasKey', JSON.stringify(listaPelicula))
+    // limpiar los datos
+    limpiarFormulario();
+    // cerrar ventana
+    modalPelicula.hide();
+    // mostrar mensaje de operacion con exito
+    Swal.fire(
+      'Perfecto!',
+      'Editaste una pelicula correctamente',
+      'success'
+    )
+    leerDatos();
+    }
+  } 
