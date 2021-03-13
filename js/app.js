@@ -1,11 +1,13 @@
-import {Pelicula} from "./admin/peliculaClass.js";
+
+
+// import {Pelicula} from "./admin/peliculaClass.js";
 let categoriaAccion = [];
 let categoriaDrama = [];
 let categoriaComedia= [];
 let categoriaRomance= [];
 let listaPelicula= [];
-let pelicula=[];
 leerPeliculas();
+cargarPelicula();
 
 
 function leerPeliculas(){
@@ -52,6 +54,7 @@ function dibujarCard(){
     comedia.innerHTML='';
     let romance = document.getElementById('romance');
     romance.innerHTML='';
+    let codigo='';
             for(let i in categoriaAccion){
                 if(categoriaAccion[i].imagen===''){
                     // se agrega una imagen por defecto
@@ -60,8 +63,9 @@ function dibujarCard(){
                 }else{
                     img=`img/peliculas/${categoriaAccion[i].imagen}`;
                 }
+                codigo=categoriaAccion[i].codigo;
                 infoPelicula=`
-                <div class="pelicula">
+                <div class="pelicula" id="${codigo}">
                     <a href="administrador.html"><img src="${img}" class="w-100" alt=""></a>
                 </div>
                 `;
@@ -78,8 +82,9 @@ function dibujarCard(){
                     img=`img/peliculas/${categoriaDrama[i].imagen}`;
                     
                 }
+                codigo=categoriaDrama[i].codigo;
                 infoPelicula=`
-                <div class="pelicula">
+                <div class="pelicula" id="${codigo}">
                     <a><img src="${img}" class="w-100" alt=""></a>
                 </div>
                 `;
@@ -95,9 +100,10 @@ function dibujarCard(){
                 }else{
                     img=`img/peliculas/${categoriaComedia[i].imagen}`;
                 }
+                codigo=categoriaComedia[i].codigo;
                 infoPelicula=`
-                <div class="pelicula">
-                    <a href="pelicula.html"><img src="${img}" class="w-100" alt=""></a>
+                <div class="pelicula" id="${codigo}">
+                    <a><img src="${img}" class="w-100" alt=""></a>
                 </div>
                 `;
                 // agregar las peliculas al carrete
@@ -112,9 +118,10 @@ function dibujarCard(){
                 }else{
                     img=`img/peliculas/${categoriaRomance[i].imagen}`;
                 }
+                codigo=categoriaRomance[i].codigo;
                 infoPelicula=`
-                <div class="pelicula">
-                    <a href="pelicula.html"><img src="${img}" class="w-100" alt=""></a>
+                <div class="pelicula" id="${codigo}">
+                    <a><img src="${img}" class="w-100" alt=""></a>
                 </div>
                 `;
                 // agregar las peliculas al carrete
@@ -124,6 +131,39 @@ function dibujarCard(){
 }
 
 
+function cargarPelicula(){
+    let id='';
+    let pelicula=[];
+    let titulo='';
+    let portada='';
+    let descripcion='';
+    let main=document.getElementById('main');
+    let elemento = document.getElementsByClassName('pelicula');
+    for(let i=0; i<elemento.length;i++){
+        elemento[i].addEventListener('click', function(){
+            id=this.id;
+            console.log(id);
+            for(let i in listaPelicula){
+                if(listaPelicula[i].codigo==id){
+                    console.log('pelicula filtrada');
+                    pelicula.push(listaPelicula[i]);
+                    console.log(pelicula);
+                    
+                    titulo=pelicula[0].nombre;
+                    portada=`img/peliculas/${pelicula[0].imagen}`;
+                    descripcion=pelicula[0].descripcion;
 
-    
 
+                    main.innerHTML= `
+                    <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
+                    <img class="img-fluid" src="${portada}" alt="imagen de pelicula">
+                    <section class="container my-4">
+                        <p>${descripcion}</p>
+                        <a href="#" class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
+                    </section>
+                    `
+                }
+            }
+        }
+    )}
+}
