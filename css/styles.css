@@ -2,8 +2,19 @@ body{
     background-color: #03081d;
     color: rgb(207, 207, 207);
 }
+<<<<<<< HEAD
 .modal{
     background-color: #03081d;
+=======
+/* modal */
+.modal-content {
+    background: #03081d !important; 
+    opacity: 0.95;
+}
+.modal-backdrop{
+    background-color: #03081d;
+}
+>>>>>>> 17cdd793d9c8ea123b363c6f6db7d51d306620e8
 
 }
 /* navbar */
@@ -151,6 +162,7 @@ a:hover{
 
 }
 
+<<<<<<< HEAD
 .card1{
     
     color: white;
@@ -162,4 +174,13 @@ a:hover{
     background-color:black;
     opacity: 0.90;
     
+=======
+/* pagina peliculas */
+
+@media all and (min-width: 322px) and (max-width: 767px){
+.margen{
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+>>>>>>> 17cdd793d9c8ea123b363c6f6db7d51d306620e8
 }
