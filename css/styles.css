@@ -2,7 +2,10 @@ body{
     background-color: #03081d;
     color: rgb(207, 207, 207);
 }
+.modal{
+    background-color: #03081d;
 
+}
 /* navbar */
 nav{
     background-color: #03081d;
@@ -146,4 +149,17 @@ a:hover{
 /* device sm-pequeño */
 @media all and (min-width: 322px) and (max-width: 767px){
 
+}
+
+.card1{
+    
+    color: white;
+    background-image: url(https://cdn.forbes.com.mx/2020/11/Disney-streaming-640x360.jpg);
+    
+}
+
+.card2{
+    background-color:black;
+    opacity: 0.90;
+    
 }
