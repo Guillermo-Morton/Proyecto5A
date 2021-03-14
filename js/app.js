@@ -162,6 +162,8 @@ function cargarPelicula(){
                         <a href="#" class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
                     </section>
                     `
+                }else{
+                    
                 }
             }
         }
