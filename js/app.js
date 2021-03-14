@@ -126,20 +126,30 @@ function dibujarCard(){
                 romance.innerHTML += infoPelicula;
             }
 }
-
-
+let main=document.getElementById('main');
+let pelicula=[];
+let titulo='';
+let portada='';
+let descripcion='';
+let video='';
+function reproducir(){
+    video=pelicula[0].embed;
+    main.innerHTML= `
+    <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
+    ${video}
+    <section class="container my-4">
+        <p>${descripcion}</p>
+    </section>
+    `
+}
 function cargarPelicula(){
-    let id='';
-    let pelicula=[];
-    let titulo='';
-    let portada='';
-    let descripcion='';
-    let main=document.getElementById('main');
+    let id=''; 
     let elemento = document.getElementsByClassName('pelicula');
     for(let i=0; i<elemento.length;i++){
         elemento[i].addEventListener('click', function(){
             id=this.id;
             console.log(id);
+  
             for(let i in listaPelicula){
                 if(listaPelicula[i].codigo==id){
                     console.log('pelicula filtrada');
@@ -149,14 +159,15 @@ function cargarPelicula(){
                     titulo=pelicula[0].nombre;
                     portada=`img/peliculas/${pelicula[0].imagen}`;
                     descripcion=pelicula[0].descripcion;
-
+                    let video='';
+ 
 
                     main.innerHTML= `
                     <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
                     <img class="img-fluid" src="${portada}" alt="imagen de pelicula">
                     <section class="container my-4">
                         <p>${descripcion}</p>
-                        <a href="#" class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
+                        <a href="#" onclick='reproducir()' class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
                     </section>
                     `
                 }else{
