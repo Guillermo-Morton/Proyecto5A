@@ -168,7 +168,6 @@ window.editarPelicula= function(btnEditar){
     let objetoEncontrado = listaPelicula.find((producto)=>{
       return producto.codigo==btnEditar.id;
     });
-    console.log(objetoEncontrado)
    //cargar los datos en el formulario
    document.getElementById('codigoPelicula2').value=objetoEncontrado.codigo; 
    document.getElementById('codigoPelicula').value=objetoEncontrado.codigo; 
