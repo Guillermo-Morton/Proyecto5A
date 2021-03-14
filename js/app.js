@@ -186,7 +186,7 @@ function cargarPelicula(){
 function cargarDestacada(){
     let destacada=document.getElementById('portada');
     console.log(destacada);
-    if(peliculaDestacada.length>0){
+    if(peliculaDestacada!=null){
         let portada=`img/peliculas/${peliculaDestacada[0].imagen}`;
         let titulo=peliculaDestacada[0].nombre;
         let descripcion=peliculaDestacada[0].descripcion;
