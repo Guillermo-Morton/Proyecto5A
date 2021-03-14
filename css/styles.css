@@ -180,6 +180,11 @@ a:hover{
 .video{
     height: 700px;
 }
+.destacada{
+    height: 700px;
+    object-fit: cover;
+    object-position: top;
+}
 @media all and (min-width: 322px) and (max-width: 450px){
 .margen{
     margin-left: 30px !important;
@@ -188,14 +193,21 @@ a:hover{
 .video{
     height: 200px;
 }
+.destacada{
+    height: 200px;
+}
 }
 @media all and (min-width: 451px) and (max-width: 767px){
 .video{
     height: 350px;
     
 }
+.destacada{
+    height: 350px;
+}
 .margen{
     margin-left: 30px !important;
     margin-right: 30px !important;
 }
 }
+

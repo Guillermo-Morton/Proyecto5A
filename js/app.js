@@ -140,7 +140,7 @@ let video='';
 function reproducir(){
     video=pelicula[0].embed;
     main.innerHTML= `
-    <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
+    <h1 class="mx-5 mt-5 mb-4 display-3"">${titulo}</h1>
     ${video}
     <section class="container my-4">
         <p>${descripcion}</p>
@@ -168,8 +168,8 @@ function cargarPelicula(){
  
 
                     main.innerHTML= `
-                    <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
-                    <img class="img-fluid" src="${portada}" alt="imagen de pelicula">
+                    <h1 class="mx-5 mt-5 mb-4 display-3">${titulo}</h1>
+                    <img class="w-100 destacada" src="${portada}" alt="imagen de pelicula">
                     <section class="container my-4">
                         <p>${descripcion}</p>
                         <a href="#" onclick='reproducir()' class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
@@ -186,25 +186,36 @@ function cargarPelicula(){
 function cargarDestacada(){
     let destacada=document.getElementById('portada');
     console.log(destacada);
-    let portada=`img/peliculas/${peliculaDestacada[0].imagen}`;
-    let titulo=peliculaDestacada[0].nombre;
-    let descripcion=peliculaDestacada[0].descripcion;
+    if(peliculaDestacada.length>0){
+        let portada=`img/peliculas/${peliculaDestacada[0].imagen}`;
+        let titulo=peliculaDestacada[0].nombre;
+        let descripcion=peliculaDestacada[0].descripcion;
+            destacada.innerHTML=`
+            <img src="${portada}" class="w-100 destacada" alt="">
+            <div class="container textosPortada">
+                 <h2 class="font-weight-bold">${titulo}</h2>
+                 <p class="lead ">${descripcion}</p>
+                 <a onclick='paginaDestacada()' class="btn boton px-5" href="#">Reproducir</a>
+             </div>
+            `         
+    }else{
         destacada.innerHTML=`
-        <img src="${portada}" class="w-100 video" alt="">
-        <div class="container textosPortada">
-             <h2 class="font-weight-bold">${titulo}</h2>
-             <p class="lead ">${descripcion}</p>
-             <a onclick='paginaDestacada()' class="btn boton px-5" href="#">Reproducir</a>
-         </div>
-        `  
+            <img src="img/error404.png" class="mx-auto destacada" alt="">
+            <div class="container textosPortada">
+                 <h2 class="font-weight-bold">No se encontro la pelicula destacada</h2>
+                 <p class="lead ">No existe una descripcion</p>
+                 <a onclick='paginaDestacada()' class="btn boton px-5 disabled" href="#">Reproducir</a>
+             </div>
+            `         
+    }
 }
 function paginaDestacada() {
     let portada=`img/peliculas/${peliculaDestacada[0].imagen}`;
     let titulo=peliculaDestacada[0].nombre;
     let descripcion=peliculaDestacada[0].descripcion;
     main.innerHTML= `
-    <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
-    <img class="img-fluid" src="${portada}" alt="imagen de pelicula">
+    <h1 class="mx-5 mt-5 mb-4 display-3"">${titulo}</h1>
+    <img class="w-100 destacada" src="${portada}" alt="imagen de pelicula">
     <section class="container my-4">
         <p>${descripcion}</p>
         <a href="#" onclick='reproducirDestacada()' class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
@@ -217,7 +228,7 @@ function reproducirDestacada(){
     let titulo=peliculaDestacada[0].nombre;
     let descripcion=peliculaDestacada[0].descripcion;
     main.innerHTML= `
-    <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
+    <h1 class="mx-5 mt-5 mb-4 display-3"">${titulo}</h1>
     ${video}
     <section class="container my-4">
         <p>${descripcion}</p>
