@@ -3,39 +3,43 @@ let categoriaDrama = [];
 let categoriaComedia= [];
 let categoriaRomance= [];
 let listaPelicula= [];
+let peliculaDestacada= [];
 leerPeliculas();
 cargarPelicula();
-destacarPelicula();
+cargarDestacada();
+// cargarDestacada();
+console.log(peliculaDestacada);
 
 
 function leerPeliculas(){
     // Esta funcion va a leer los datos existentes en el localstorage
     if(localStorage.length > 0){
         listaPelicula = JSON.parse(localStorage.getItem('listaPeliculasKey'));
+        peliculaDestacada = JSON.parse(localStorage.getItem('peliculaDestacadaKey'));
 
         for(let i in listaPelicula){
             if(listaPelicula[i].categoria==='accion'){
                 categoriaAccion.push(listaPelicula[i]);
-                console.log(categoriaAccion);
+                
             }
         }
 
         for(let i in listaPelicula){
             if(listaPelicula[i].categoria==='drama'){
                 categoriaDrama.push(listaPelicula[i]);
-                console.log(categoriaDrama);
+                
             }
         }
         for(let i in listaPelicula){
             if(listaPelicula[i].categoria==='comedia'){
                 categoriaComedia.push(listaPelicula[i]);
-                console.log(categoriaComedia);
+                
             }
         }
         for(let i in listaPelicula){
             if(listaPelicula[i].categoria==='romance'){
                 categoriaRomance.push(listaPelicula[i]);
-                console.log(categoriaRomance);
+                
             }
         }
         dibujarCard();
@@ -178,7 +182,45 @@ function cargarPelicula(){
         }
     )}
 }
-function destacarPelicula(){
-    let portada=document.getElementById('portada');
-    console.log(portada);
+
+function cargarDestacada(){
+    let destacada=document.getElementById('portada');
+    console.log(destacada);
+    let portada=`img/peliculas/${peliculaDestacada[0].imagen}`;
+    let titulo=peliculaDestacada[0].nombre;
+    let descripcion=peliculaDestacada[0].descripcion;
+        destacada.innerHTML=`
+        <img src="${portada}" class="w-100 video" alt="">
+        <div class="container textosPortada">
+             <h2 class="font-weight-bold">${titulo}</h2>
+             <p class="lead ">${descripcion}</p>
+             <a onclick='paginaDestacada()' class="btn boton px-5" href="#">Reproducir</a>
+         </div>
+        `  
+}
+function paginaDestacada() {
+    let portada=`img/peliculas/${peliculaDestacada[0].imagen}`;
+    let titulo=peliculaDestacada[0].nombre;
+    let descripcion=peliculaDestacada[0].descripcion;
+    main.innerHTML= `
+    <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
+    <img class="img-fluid" src="${portada}" alt="imagen de pelicula">
+    <section class="container my-4">
+        <p>${descripcion}</p>
+        <a href="#" onclick='reproducirDestacada()' class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
+    </section>
+    `
+}
+function reproducirDestacada(){
+    console.log("prueb")
+    let video=peliculaDestacada[0].embed;
+    let titulo=peliculaDestacada[0].nombre;
+    let descripcion=peliculaDestacada[0].descripcion;
+    main.innerHTML= `
+    <h1 class="mx-5 mt-5 mb-4">${titulo}</h1>
+    ${video}
+    <section class="container my-4">
+        <p>${descripcion}</p>
+    </section>
+    `
 }

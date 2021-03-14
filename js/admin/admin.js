@@ -1,5 +1,5 @@
 import {Pelicula} from "./peliculaClass.js";
-
+let peliculaDestacada= [];
 let listaPelicula = [];
 // Agregar funcionalidad para abrir el modal
 const modalPelicula = new bootstrap.Modal(document.getElementById('modal'));
@@ -115,12 +115,23 @@ function dibujarDatos(_listaPelicula){
             <td>
                 <a onclick="editarPelicula(this)" class="ms-1" id="${_listaPelicula[i].codigo}"><i class="far fa-edit"></i></a>
                 <a onclick="eliminarPelicula(this)" class="ms-1" id="${_listaPelicula[i].codigo}"><i class="fas fa-trash-alt"></i></a>
-                <a class="ms-1"><i class="far fa-star"></i></a>
+                <a onclick="destacarPelicula(this)"class="ms-1 destacar"  id="${_listaPelicula[i].codigo}"><i class="far fa-star"></i></a>
             </td>
           </tr>
         `;
         bodyTablaProductos.innerHTML += codigoHTML;
     }
+}
+// funcion para destacar pelicula
+window.destacarPelicula= function(pelicula){
+  console.log('prueba', pelicula.id);
+  for(let i in listaPelicula){
+    if(pelicula.id==listaPelicula[i].codigo){
+      peliculaDestacada.push(listaPelicula[i]);
+      console.log(peliculaDestacada);
+      localStorage.setItem('peliculaDestacadaKey', JSON.stringify(peliculaDestacada));
+    }
+  }
 }
 // funcion para eliminar peliculas del localstorage
 window.eliminarPelicula= function (pelicula){
