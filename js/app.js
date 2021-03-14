@@ -1,6 +1,3 @@
-
-
-// import {Pelicula} from "./admin/peliculaClass.js";
 let categoriaAccion = [];
 let categoriaDrama = [];
 let categoriaComedia= [];
@@ -163,7 +160,7 @@ function cargarPelicula(){
                     </section>
                     `
                 }else{
-                    
+                
                 }
             }
         }
