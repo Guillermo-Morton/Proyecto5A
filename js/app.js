@@ -5,6 +5,7 @@ let categoriaRomance= [];
 let listaPelicula= [];
 leerPeliculas();
 cargarPelicula();
+destacarPelicula();
 
 
 function leerPeliculas(){
@@ -63,7 +64,7 @@ function dibujarCard(){
                 codigo=categoriaAccion[i].codigo;
                 infoPelicula=`
                 <div class="pelicula" id="${codigo}">
-                    <a href="administrador.html"><img src="${img}" class="w-100" alt=""></a>
+                    <a href="#"><img src="${img}" class="w-100" alt=""></a>
                 </div>
                 `;
                 // agregar las peliculas al carrete
@@ -82,7 +83,7 @@ function dibujarCard(){
                 codigo=categoriaDrama[i].codigo;
                 infoPelicula=`
                 <div class="pelicula" id="${codigo}">
-                    <a><img src="${img}" class="w-100" alt=""></a>
+                    <a href="#"><img src="${img}" class="w-100" alt=""></a>
                 </div>
                 `;
                 // agregar las peliculas al carrete
@@ -100,7 +101,7 @@ function dibujarCard(){
                 codigo=categoriaComedia[i].codigo;
                 infoPelicula=`
                 <div class="pelicula" id="${codigo}">
-                    <a><img src="${img}" class="w-100" alt=""></a>
+                    <a href="#"><img src="${img}" class="w-100" alt=""></a>
                 </div>
                 `;
                 // agregar las peliculas al carrete
@@ -118,7 +119,7 @@ function dibujarCard(){
                 codigo=categoriaRomance[i].codigo;
                 infoPelicula=`
                 <div class="pelicula" id="${codigo}">
-                    <a><img src="${img}" class="w-100" alt=""></a>
+                    <a href="#"><img src="${img}" class="w-100" alt=""></a>
                 </div>
                 `;
                 // agregar las peliculas al carrete
@@ -176,4 +177,8 @@ function cargarPelicula(){
             }
         }
     )}
+}
+function destacarPelicula(){
+    let portada=document.getElementById('portada');
+    console.log(portada);
 }

@@ -5,6 +5,6 @@ export class Pelicula{
         this.categoria = categoria;
         this.descripcion = descripcion;
         this.imagen = imagen;
-        this.embed = embed; 
+        this.embed = embed;
     }
 }

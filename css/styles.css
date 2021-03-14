@@ -177,10 +177,20 @@ a:hover{
     opacity: 0.90;}
     
 /* pagina peliculas */
-
-@media all and (min-width: 322px) and (max-width: 767px){
+.video{
+    height: 700px;
+}
+@media all and (min-width: 322px) and (max-width: 450px){
 .margen{
     margin-left: 30px !important;
     margin-right: 30px !important;
+}
+.video{
+    height: 200px;
+}
+}
+@media all and (min-width: 451px) and (max-width: 767px){
+.video{
+    height: 350px;
 }
 }
