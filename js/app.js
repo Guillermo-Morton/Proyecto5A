@@ -203,7 +203,7 @@ function cargarDestacada(){
             <img src="img/error404.png" class="mx-auto destacada" alt="">
             <div class="container textosPortada">
                  <h2 class="font-weight-bold">No se encontro la pelicula destacada</h2>
-                 <p class="lead ">No existe una descripcion</p>
+                 <p class="lead ">No existe una descripciongi</p>
                  <a onclick='paginaDestacada()' class="btn boton px-5 disabled" href="#">Reproducir</a>
              </div>
             `         
