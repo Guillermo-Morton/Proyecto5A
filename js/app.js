@@ -156,7 +156,7 @@ window.reproducir=function(){
     main.innerHTML= `
     <h1 class="mx-5 mt-5 mb-4 display-3"">${titulo}</h1>
     ${video}
-    <section class="container my-4">
+    <section class="margen mx-5">
         <p>${descripcion}</p>
     </section>
     `
@@ -187,7 +187,7 @@ function cargarPelicula(){
                      main.innerHTML= `
                      <h1 class="mx-5 mt-5 mb-4 display-3">No disponible</h1>
                      <div class="divError"><img class="d-block mx-auto error" src="img/error404.png" alt="imagen de pelicula"></div>
-                     <section class="container my-4">
+                     <section class="margen mx-5">
                          <p>Descripcion no disponible</p>
                          <a href="#" class="btn boton mb-5 px-5 py-2 fs-4 disabled">Reproducir</a>
                      </section>
@@ -197,7 +197,7 @@ function cargarPelicula(){
                        main.innerHTML= `
                        <h1 class="mx-5 mt-5 mb-4 display-3">${titulo}</h1>
                        <img class="w-100 destacada" src="${portada}" alt="imagen de pelicula">
-                       <section class="container my-4">
+                       <section class="margen mx-5">
                            <p>${descripcion}</p>
                            <a href="#" onclick='reproducir()' class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
                        </section>
@@ -246,7 +246,7 @@ window.paginaDestacada=function () {
     main.innerHTML= `
     <h1 class="mx-5 mt-5 mb-4 display-3"">${titulo}</h1>
     <img class="w-100 destacada" src="${portada}" alt="imagen de pelicula">
-    <section class="container my-4">
+    <section class="margen mx-5">
         <p>${descripcion}</p>
         <a href="#" onclick='reproducirDestacada()' class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
     </section>
@@ -260,7 +260,7 @@ window.reproducirDestacada=function(){
     main.innerHTML= `
     <h1 class="mx-5 mt-5 mb-4 display-3"">${titulo}</h1>
     ${video}
-    <section class="container my-4">
+    <section class="margen mx-5">
         <p>${descripcion}</p>
     </section>
     `

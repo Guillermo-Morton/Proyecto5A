@@ -218,7 +218,7 @@ a:hover{
     object-fit: fill;
 }
 }
-@media all and (min-width: 451px) and (max-width: 767px){
+@media all and (min-width: 451px) and (max-width: 750px){
 .video{
     height: 350px;
     
