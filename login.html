@@ -16,11 +16,11 @@
 </head>
 <body>
     <header>
-        <nav class="container-fluid my-3">
+        <nav id="nav" class="container-fluid my-3">
             <div class="d-flex justify-content-between">
                 <div><a href="index.html"><img class="logo" src="img/logo2.png" alt="logo Disney+"></a></div>
                 <div>
-                    <ul class="nav ">  
+                    <ul class="nav">  
                         <li class="nav-item">
                             <a class="btn boton mx-2" href="registrar.html">REGISTRATE</a> 
                         </li>
@@ -55,6 +55,7 @@
                       <label for="InputPassword1" class="form-label">Contraseña</label>
                       <input type="password" class="form-control" id="contLogin" placeholder="Ingresa tu contraseña" 
                       onblur="validarCampoRequerido(this)">
+                      <div id="usuarioIncorrecto" class="my-3 text-center d-none" role="alert">Usuario o contraseña incorrecto</div>
                       <a href="#" data-bs-toggle="modal" data-bs-target="#modalCont">¿Olvidaste tu contraseña?</a>
                     </div>
                     <div class="mb-3 form-check">

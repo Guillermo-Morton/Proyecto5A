@@ -5,10 +5,12 @@ let categoriaComedia= [];
 let categoriaRomance= [];
 let listaPelicula= [];
 let peliculaDestacada= [];
+let usuarioLogueado=[];
 
 leerPeliculas();
 cargarPelicula();
 cargarDestacada();
+
 
 
 
@@ -149,7 +151,7 @@ let titulo='';
 let portada='';
 let descripcion='';
 let video='';
-function reproducir(){
+window.reproducir=function(){
     video=pelicula[0].embed;
     main.innerHTML= `
     <h1 class="mx-5 mt-5 mb-4 display-3"">${titulo}</h1>
@@ -210,7 +212,6 @@ function cargarPelicula(){
 // estas tres funciones existen para ejecutar correctamente la funcionalidad de destacar peliculas
 function cargarDestacada(){
     let destacada=document.getElementById('portada');
-    console.log(destacada);
     // si nuestro array es distinto de null
     if(peliculaDestacada!=null){
         // inicializamos variables asignando la unformacion de la pelicula destacada guardada en localstorage
@@ -238,7 +239,7 @@ function cargarDestacada(){
             `         
     }
 }
-function paginaDestacada() {
+window.paginaDestacada=function () {
     let portada=`img/peliculas/${peliculaDestacada[0].imagen}`;
     let titulo=peliculaDestacada[0].nombre;
     let descripcion=peliculaDestacada[0].descripcion;
@@ -251,7 +252,7 @@ function paginaDestacada() {
     </section>
     `
 }
-function reproducirDestacada(){
+window.reproducirDestacada=function(){
     console.log("prueb")
     let video=peliculaDestacada[0].embed;
     let titulo=peliculaDestacada[0].nombre;
