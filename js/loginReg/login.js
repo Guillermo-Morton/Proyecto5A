@@ -65,7 +65,7 @@ function leerAdmin(){
         console.log(usuarioLogueado);
         actualizarNav();
         // window.location.href= "index.html";
-  }
+    }
   }
 function actualizarNav(){
     let navBar=document.getElementById('nav');
@@ -98,7 +98,7 @@ function actualizarNav(){
                     <div>
                         <ul class="nav">  
                           <li class="nav-item">
-                              <a onclick='cerrarSesion()'class="btn boton2 me-1">Bienvenido ${usuarioLogueado[i].nombre}<i class="fas fa-user-cog mx-1"></i></a> 
+                              <a onclick='cerrarSesion()'class="btn boton2 me-1">Bienvenido ${usuarioLogueado[i].nombre}<i class="fas fa-user mx-1"></i></a> 
                           </li>
                           <li class="nav-item">
                               <a class="nav-link active inicio" aria-current="page" href="index.html"><i class="inicio fas fa-2x fa-home"></i></a>

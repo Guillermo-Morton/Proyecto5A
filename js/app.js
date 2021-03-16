@@ -10,6 +10,7 @@ let usuarioLogueado=[];
 leerPeliculas();
 cargarPelicula();
 cargarDestacada();
+bloquearIndex();
 
 
 
@@ -264,4 +265,28 @@ window.reproducirDestacada=function(){
         <p>${descripcion}</p>
     </section>
     `
+}
+function bloquearIndex(){
+    if(localStorage.getItem('usuarioLogueadoKey')===null){
+        // no existe la key alertar sobre usuario incorrecto
+        console.log('no existe key');
+        let main=document.getElementById('main');
+        let navBar=document.getElementById('nav');
+        navBar.innerHTML=`
+        <div class="d-flex justify-content-between">
+        <div><a href="index.html"><img class="logo" src="img/logo2.png" alt="logo Disney+"></a></div>
+
+        `
+        main.innerHTML=`
+        <div class="py-5">
+        <div class="card2 mx-4">
+            <h1 class="text-center pt-5 display-2">Inicia sesion o registrate, para disfrutar de nuestro contenido</h1>
+            <div class="card2 d-flex justify-content-center mt-5 pb-5">
+                <a class="btn boton mx-2" href="registrar.html">REGISTRATE</a> 
+                <a class="btn boton2 " href="login.html">INICIA SESIÓN</a>
+            </div>
+        </div>
+        </div>`;
+        main.className="card1"
+      }
 }
