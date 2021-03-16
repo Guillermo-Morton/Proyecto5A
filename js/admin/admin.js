@@ -42,11 +42,13 @@ window.agregarPelicula= function(event){
         // leer datos
         leerDatos();
         // mostrar cartel de datos guardados y cerrar el modal
-        Swal.fire(
-            'Perfecto!',
-            'Agregaste un producto correctamente',
-            'success'
-          )
+        Swal.fire({
+          icon: 'success',
+          title: '¡Perfecto!',
+          text: 'Agregaste una pelicula correctamente!',
+          iconColor:'white',
+          background: '#03081d',
+        })
         modalPelicula.hide();
     }else{
         console.log("datos incorretos");
@@ -54,6 +56,8 @@ window.agregarPelicula= function(event){
             icon: 'error',
             title: 'Oops...',
             text: 'Algo salio mal!',
+            iconColor:'white',
+            background: '#03081d',
           })
 
     }
@@ -140,6 +144,8 @@ window.eliminarPelicula= function (pelicula){
         title: '¿Estas seguro de eliminar la pelicula seleccionada?',
         text: "No hay posibilidades de revertir esta accion!",
         icon: 'warning',
+        iconColor:'white',
+        background: '#03081d',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -157,11 +163,13 @@ window.eliminarPelicula= function (pelicula){
             localStorage.setItem('listaPeliculasKey', JSON.stringify(listaPelicula))
             leerDatos();
             console.log(peliculasFiltradas);
-          Swal.fire(
-            'Eliminado!',
-            'La pelicula se elimino correctamente.',
-            'success'
-          )
+          Swal.fire({
+            icon: 'success',
+            title: '¡Eliminado!',
+            text: 'La pelicula se elimino correctamente.',
+            iconColor:'white',
+            background: '#03081d',
+          })
         }
       })     
 }

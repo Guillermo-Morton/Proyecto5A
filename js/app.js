@@ -179,19 +179,29 @@ function cargarPelicula(){
                     titulo=pelicula[0].nombre;
                     portada=`img/peliculas/${pelicula[0].imagen}`;
                     descripcion=pelicula[0].descripcion;
-                    let video='';
- 
-                    // reemplazamos el codigo
-                    main.innerHTML= `
-                    <h1 class="mx-5 mt-5 mb-4 display-3">${titulo}</h1>
-                    <img class="w-100 destacada" src="${portada}" alt="imagen de pelicula">
-                    <section class="container my-4">
-                        <p>${descripcion}</p>
-                        <a href="#" onclick='reproducir()' class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
-                    </section>
-                    `
-                }else{
-                
+                    
+                    if(portada==='img/peliculas/'){
+                     // reemplazamos el codigo
+                     main.innerHTML= `
+                     <h1 class="mx-5 mt-5 mb-4 display-3">No disponible</h1>
+                     <div class="divError"><img class="d-block mx-auto error" src="img/error404.png" alt="imagen de pelicula"></div>
+                     <section class="container my-4">
+                         <p>Descripcion no disponible</p>
+                         <a href="#" class="btn boton mb-5 px-5 py-2 fs-4 disabled">Reproducir</a>
+                     </section>
+                     `
+                    }else{
+                        // reemplazamos el codigo
+                       main.innerHTML= `
+                       <h1 class="mx-5 mt-5 mb-4 display-3">${titulo}</h1>
+                       <img class="w-100 destacada" src="${portada}" alt="imagen de pelicula">
+                       <section class="container my-4">
+                           <p>${descripcion}</p>
+                           <a href="#" onclick='reproducir()' class="btn boton mb-5 px-5 py-2 fs-4">Reproducir</a>
+                       </section>
+                       `
+                   }
+
                 }
             }
         }

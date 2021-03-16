@@ -10,7 +10,15 @@ body{
 .modal-backdrop{
     background-color: #03081d;
 }
-
+.swal2-title, .swal2-content {
+    color: white!important;
+}
+.swal2-confirm{
+    text-decoration: none!important;
+    border-radius: 3px !important;
+    color: white!important;
+    background: #0063e5!important;
+}
 /* navbar */
 nav{
     background-color: #03081d;
@@ -174,7 +182,9 @@ a:hover{
 
 .card2{
     background-color:black;
-    opacity: 0.90;}
+    opacity: 0.90;
+    border-radius: 8px;
+}
     
 /* pagina peliculas */
 .video{
@@ -184,6 +194,13 @@ a:hover{
     height: 700px;
     object-fit: cover;
     object-position: top;
+}
+.error{
+    height: 700px;
+    object-fit: fill;
+}
+.divError{
+    background: #020716;
 }
 @media all and (min-width: 322px) and (max-width: 450px){
 .margen{
@@ -195,6 +212,10 @@ a:hover{
 }
 .destacada{
     height: 200px;
+}
+.error{
+    height: 200px;
+    object-fit: fill;
 }
 }
 @media all and (min-width: 451px) and (max-width: 767px){
@@ -209,5 +230,10 @@ a:hover{
     margin-left: 30px !important;
     margin-right: 30px !important;
 }
+.error{
+    height: 350px;
+    object-fit: fill;
 }
+}
+
 
