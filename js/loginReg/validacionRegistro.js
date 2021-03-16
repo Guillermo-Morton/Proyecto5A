@@ -23,7 +23,17 @@ function validarMail(input) {
   }
 
 function validarContraseña(input){
-    if(input.value != '' && input.value.length >= 10){
+    if(input.value != '' && input.value.length >= 5){
+        input.className = 'form-control is-valid';
+        return true;
+    }else{
+        input.className = "form-control is-invalid";
+        return false;
+    }
+}
+function validarRepetirContraseña(input){
+    let contraseña= document.getElementById('usuarioContraseña')
+    if(input.value != '' && input.value === contraseña.value){
         input.className = 'form-control is-valid';
         return true;
     }else{

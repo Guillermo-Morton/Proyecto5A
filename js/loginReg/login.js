@@ -11,6 +11,9 @@ window.validarAdmin=function(event){
     let contraseña=document.getElementById('contLogin');
     usuarioLogueado=[];
     if(validarGeneral()){
+        let nombre= document.getElementById('usuarioLogin')
+        let contraseña= document.getElementById('contLogin')
+        let alerta= document.getElementById('usuarioIncorrecto');
         if(administrador.contraseña==contraseña.value && administrador.nombre==nombre.value){
             usuarioLogueado.push(administrador);
             localStorage.setItem("usuarioLogueadoKey", JSON.stringify(usuarioLogueado));
@@ -23,10 +26,11 @@ window.validarAdmin=function(event){
                     usuarioLogueado.push(listaUsuario[i]);
                     localStorage.setItem("usuarioLogueadoKey", JSON.stringify(usuarioLogueado));
                     window.location.href= "index.html";
+                }else if(localStorage.getItem('usuarioLogueadoKey')===null){
+                    alerta.className='my-3 text-center';
+                    nombre.className='form-control is-invalid';
+                    contraseña.className='form-control is-invalid';
                 }else{
-                    let nombre= document.getElementById('usuarioLogin')
-                    let contraseña= document.getElementById('contLogin')
-                    let alerta= document.getElementById('usuarioIncorrecto');
                     alerta.className='my-3 text-center';
                     nombre.className='form-control is-invalid';
                     contraseña.className='form-control is-invalid';

@@ -61,13 +61,13 @@
             </div>
             <div class="my-3">
               <label for="InputPassword1" class="form-label">Contraseña</label>
-              <input type="text" class="form-control" id="usuarioContraseña" placeholder="Escriba una contraseña de al menos 10 caracteres"
+              <input type="password" class="form-control" id="usuarioContraseña" placeholder="Escriba una contraseña de al menos 5 caracteres"
               onblur="validarContraseña(this)">
             </div>
             <div class="my-3">
                 <label for="InputPassword1" class="form-label">Confirmar contraseña</label>
-                <input type="text" class="form-control" id="usuarioContraseña2" placeholder="Repita la contraseña"
-                onblur="validarContraseña(this)">
+                <input type="password" class="form-control" id="usuarioContraseña2" placeholder="Repita la contraseña"
+                onblur="validarRepetirContraseña(this)">
               </div>
             <div style="text-align: center">
                <button type="submit" class="btn btn-md btn-block btn-primary">Registraste</button>
