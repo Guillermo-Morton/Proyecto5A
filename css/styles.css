@@ -2,6 +2,23 @@ body{
     background-color: #03081d;
     color: rgb(207, 207, 207);
 }
+/* modal */
+.modal-content {
+    background: #03081d !important; 
+    opacity: 0.95;
+}
+.modal-backdrop{
+    background-color: #03081d;
+}
+.swal2-title, .swal2-content {
+    color: white!important;
+}
+.swal2-confirm{
+    text-decoration: none!important;
+    border-radius: 3px !important;
+    color: white!important;
+    background: #0063e5!important;
+}
 /* navbar */
 nav{
     background-color: #03081d;
@@ -12,7 +29,6 @@ nav{
 
 }
 @media all and (min-width: 323px) and (max-width: 450px){
-    /*Navbar  */
     .inicio{
       display: none;
       
@@ -23,6 +39,17 @@ nav{
   .logo{
     width: 80px;
   }
+}
+/* Footer */
+@media all and (min-width: 322px) and (max-width: 534px){
+    .a{
+        font-size: 13px;
+    }
+}
+@media all and (min-width: 535px) and (max-width: 767px){
+    .a{
+        font-size: 15px;
+    }
 }
 /* Botones */
 .boton{
@@ -82,13 +109,32 @@ a:hover{
 }
 .textosPortada{
     position: absolute;
-    margin-bottom: 50px;
+    margin-bottom: 75px;
 }
 .textosPortada h2{
     font-size: 5vmin;
 }
 .textosPortada p{
     font-size: 3vmin;
+}
+/* carrete de peliculas */
+.wrapper{
+    display: flex;
+    overflow-x: scroll;
+ 
+
+}
+.wrapper::-webkit-scrollbar{
+    background-color:#0e1222;
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
+}
+.wrapper .pelicula{
+    min-width: 16.2%;
+    max-width: 16.2%;
+    margin-right: 8px;
+    background-color: #020716 ;
+    
 }
 @media all and (min-width: 322px) and (max-width: 767px){
     .portada{
@@ -97,7 +143,20 @@ a:hover{
     .textosPortada{
         margin-bottom: 0;
     }
+    .wrapper .pelicula{
+        min-width: 32%;
+        margin-right: 8px;
+        
+    }
 }
+/* error 404 */
+
+@media all and (min-width: 322px) and (max-width: 767px){
+    .error{
+        width: 60%!important;
+    }
+}
+
 /*media queries */
 /* @media mediatype */
 /* device lg-grande */
@@ -113,3 +172,68 @@ a:hover{
 @media all and (min-width: 322px) and (max-width: 767px){
 
 }
+
+.card1{
+    
+    color: white;
+    background-image: url(https://cdn.forbes.com.mx/2020/11/Disney-streaming-640x360.jpg);
+    
+}
+
+.card2{
+    background-color:black;
+    opacity: 0.90;
+    border-radius: 8px;
+}
+    
+/* pagina peliculas */
+.video{
+    height: 700px;
+}
+.destacada{
+    height: 700px;
+    object-fit: cover;
+    object-position: top;
+}
+.error{
+    height: 700px;
+    object-fit: fill;
+}
+.divError{
+    background: #020716;
+}
+@media all and (min-width: 322px) and (max-width: 450px){
+.margen{
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+.video{
+    height: 200px;
+}
+.destacada{
+    height: 200px;
+}
+.error{
+    height: 200px;
+    object-fit: fill;
+}
+}
+@media all and (min-width: 451px) and (max-width: 750px){
+.video{
+    height: 350px;
+    
+}
+.destacada{
+    height: 350px;
+}
+.margen{
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+.error{
+    height: 350px;
+    object-fit: fill;
+}
+}
+
+
