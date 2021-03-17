@@ -24,13 +24,10 @@ window.validarAdmin=function(event){
             for(let i in listaUsuario){
                 if(listaUsuario[i].nombre==nombre.value && listaUsuario[i].contraseña==contraseña.value){
                     usuarioLogueado.push(listaUsuario[i]);
+                    console.log(usuarioLogueado);
                     localStorage.setItem("usuarioLogueadoKey", JSON.stringify(usuarioLogueado));
                     window.location.href= "index.html";
                 }else if(localStorage.getItem('usuarioLogueadoKey')===null){
-                    alerta.className='my-3 text-center';
-                    nombre.className='form-control is-invalid';
-                    contraseña.className='form-control is-invalid';
-                }else{
                     alerta.className='my-3 text-center';
                     nombre.className='form-control is-invalid';
                     contraseña.className='form-control is-invalid';
@@ -68,9 +65,9 @@ function leerAdmin(){
         usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueadoKey')) ;
         console.log(usuarioLogueado);
         actualizarNav();
-        // window.location.href= "index.html";
     }
   }
+//   esta funcion se encarga de de pintar el navbar en todas las paginas
 function actualizarNav(){
     let navBar=document.getElementById('nav');
       if(usuarioLogueado[0].nombre==='Administrador'){
@@ -96,13 +93,14 @@ function actualizarNav(){
           for(let i in listaUsuario){
               if (usuarioLogueado[0].nombre===listaUsuario[i].nombre){
                   console.log(true)
+                  let nombre= listaUsuario[i].nombre;
                   navBar.innerHTML=`
                   <div class="d-flex justify-content-between">
                   <div><a href="index.html"><img class="logo" src="img/logo2.png" alt="logo Disney+"></a></div>
                     <div>
                         <ul class="nav">  
                           <li class="nav-item">
-                              <a onclick='cerrarSesion()'class="btn boton2 me-1">Bienvenido ${usuarioLogueado[i].nombre}<i class="fas fa-user mx-1"></i></a> 
+                              <a onclick='cerrarSesion()'class="btn boton2 me-1">Bienvenido ${nombre}<i class="fas fa-user mx-1"></i></a> 
                           </li>
                           <li class="nav-item">
                               <a class="nav-link active inicio" aria-current="page" href="index.html"><i class="inicio fas fa-2x fa-home"></i></a>
@@ -115,6 +113,7 @@ function actualizarNav(){
           }
       }
   }
+//   esta funcion sirve para eliminar la key usuario logueado en local storage, cerrando la sesion
 window.cerrarSesion=function() {
     Swal.fire({
         title: '¿Desea cerrar la sesion?',
