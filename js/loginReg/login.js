@@ -19,6 +19,7 @@ window.validarAdmin=function(event){
             localStorage.setItem("usuarioLogueadoKey", JSON.stringify(usuarioLogueado));
             leerAdmin();
             window.location.href= "index.html";
+            return ;
         }else{
             console.log(listaUsuario)
             for(let i in listaUsuario){
@@ -27,6 +28,7 @@ window.validarAdmin=function(event){
                     console.log(usuarioLogueado);
                     localStorage.setItem("usuarioLogueadoKey", JSON.stringify(usuarioLogueado));
                     window.location.href= "index.html";
+                    return ;
                 }else if(localStorage.getItem('usuarioLogueadoKey')===null){
                     alerta.className='my-3 text-center';
                     nombre.className='form-control is-invalid';
